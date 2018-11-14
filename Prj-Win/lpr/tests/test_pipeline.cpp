@@ -13,8 +13,8 @@ void TEST_PIPELINE(){
                       "../lpr/model/CharacterRecognization.prototxt","../lpr/model/CharacterRecognization.caffemodel"
                     );
 
-    cv::Mat image = cv::imread("../6.jpg");
-    cv::imshow("image",image);
+    cv::Mat image = cv::imread("../CAG576-1.jpg");
+    cv::imshow("image",image);	
     cv::waitKey(0);
 
     std::vector<pr::PlateInfo> res = prc.RunPiplineAsImage(image);
