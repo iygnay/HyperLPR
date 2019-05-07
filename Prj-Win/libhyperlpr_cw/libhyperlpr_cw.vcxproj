@@ -83,8 +83,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\huisa\Source\Repos\HyperLPR\Prj-Win\lpr\include;C:\opencv\3.3.1\build\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\huisa\Source\Repos\HyperLPR\Prj-Win\Build\lib;C:\opencv\3.3.1\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)lpr\include;C:\opencv\3.4.2\build\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)build\lib;C:\opencv\3.4.2\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)_v2.0.3</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -151,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\lpr\include\SegmentationFreeRecognizer.h" />
     <ClInclude Include="plate_recognize.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />

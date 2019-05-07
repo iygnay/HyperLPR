@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "plate_recognize.h"
-#include <pipeline.h>
+#include "pipeline.h"
 #include <string>
 #include <sstream>
 
@@ -24,13 +24,13 @@ int plate_recognize(
 	);
 
 	cv::Mat image = cv::imread(imageFileName);
-	auto res = prc.RunPiplineAsImage(image);
+	auto res = prc.RunPiplineAsImage(image, pr::SEGMENTATION_BASED_METHOD);
 	std::stringstream ss;
 
 	for (auto st : res) {
 		ss << st.getPlateName() << " " << st.getPlateType() << " " << st.confidence << "#";
 	}
-
+	
 	// 输出结果
 	size_t i;
 	auto data = ss.str();
@@ -40,4 +40,5 @@ int plate_recognize(
 
 	// 返回
 	return static_cast<int>(data.size());
+	//return static_cast<int>(res.size());
 }

@@ -11,17 +11,17 @@ namespace HyperLPR.Demo
     {
         static void Main(string[] args)
         {
-            var data = new byte[2000];
+            var data = new byte[20000];
 
             var count = LibHyperLPRCW.PlateRecognize(
-                "hyperlpr_model_中文/cascade.xml",
-                "hyperlpr_model_中文/HorizonalFinemapping.prototxt", 
-                "hyperlpr_model_中文/HorizonalFinemapping.caffemodel",
-                "hyperlpr_model_中文/Segmentation.prototxt", 
-                "hyperlpr_model_中文/Segmentation.caffemodel",
-                "hyperlpr_model_中文/CharacterRecognization.prototxt",
-                "hyperlpr_model_中文/CharacterRecognization.caffemodel",
-                "hyperlpr_image/浙CD73L8.jpg",
+                "hyperlpr_model/cascade.xml",
+                "hyperlpr_model/HorizonalFinemapping.prototxt", 
+                "hyperlpr_model/HorizonalFinemapping.caffemodel",
+                "hyperlpr_model/Segmentation.prototxt", 
+                "hyperlpr_model/Segmentation.caffemodel",
+                "hyperlpr_model/CharacterRecognization.prototxt", 
+                "hyperlpr_model/CharacterRecognization.caffemodel",
+                "hyperlpr_image/浙C1993A.jpg",
                 data,
                 data.Length
                 );
@@ -30,7 +30,7 @@ namespace HyperLPR.Demo
             var s2 = Encoding.UTF8.GetString(data, 0, Math.Min(count, data.Length));
             var s3 = Encoding.Unicode.GetString(data, 0, Math.Min(count, data.Length));
             var s4 = Encoding.Default.GetString(data, 0, Math.Min(count, data.Length));
-            Console.WriteLine("program end");
+            Console.WriteLine($"1program end {count}: {s4}");
             Console.ReadKey();
         }
     }
@@ -38,7 +38,7 @@ namespace HyperLPR.Demo
     public static class LibHyperLPRCW
     {
         [DllImport(
-            "libhyperlpr_cw.dll",
+            "libhyperlpr_cw_v2.0.3.dll",
             CallingConvention = CallingConvention.StdCall,
             EntryPoint = "plate_recognize")]
         public static extern int PlateRecognize(
@@ -49,6 +49,8 @@ namespace HyperLPR.Demo
             string segmentation_caffemodel,
             string charRecognization_proto,
             string charRecognization_caffemodel,
+            //string segmentationfree_proto,
+            //string segmentationfree_caffemodel,
             string imageFileName,
             byte[] buffer,
             int bufferSize

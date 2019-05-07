@@ -27,6 +27,9 @@
     <ClInclude Include="plate_recognize.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\lpr\include\SegmentationFreeRecognizer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -16,9 +16,10 @@ namespace pr{
 
     void PlateDetection::plateDetectionRough(cv::Mat InputImage,std::vector<pr::PlateInfo>  &plateInfos,int min_w,int max_w){
 
-        cv::Mat processImage;
+        cv::Mat processImage(InputImage);
+//        cv::Mat processImage;
 
-         cv::cvtColor(InputImage,processImage,cv::COLOR_BGR2GRAY);
+//         cv::cvtColor(InputImage,processImage,cv::COLOR_BGR2GRAY);
 
 
         std::vector<cv::Rect> platesRegions;
@@ -36,10 +37,10 @@ namespace pr{
 //            w += w * 0.28
 //            y -= h * 0.6
 //            h += h * 1.1;
-            int zeroadd_w  = static_cast<int>(plate.width*0.28);
-            int zeroadd_h = static_cast<int>(plate.height*1.2);
-            int zeroadd_x = static_cast<int>(plate.width*0.14);
-            int zeroadd_y = static_cast<int>(plate.height*0.6);
+            int zeroadd_w  = static_cast<int>(plate.width*0.30);
+            int zeroadd_h = static_cast<int>(plate.height*2);
+            int zeroadd_x = static_cast<int>(plate.width*0.15);
+            int zeroadd_y = static_cast<int>(plate.height*1);
             plate.x-=zeroadd_x;
             plate.y-=zeroadd_y;
             plate.height += zeroadd_h;
